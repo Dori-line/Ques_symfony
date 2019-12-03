@@ -1,7 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ slug }}{% endblock %}
 {% block body %}
-    {% if page == "" %}
-        <h1>No series selcted, please choose a serie!</h1>
-    {% else %}
-<h1>{{ page }}</h1>
-    {% endif %}
+    <div class="media">
+        <img class="align-self-start mr-3" src="{{ program.poster }}" alt="{{ program.title }} poster">
+        <div class="media-body">
+            <h1 class="mt-0">{{ program.title }}</h1>
+            <p>Category : {{ program.category.name }}</p>
+        </div>
+    </div>
+    <a href="{{ path('wild_index') }}">
+        Back to home
+    </a>
+
 {% endblock %}
