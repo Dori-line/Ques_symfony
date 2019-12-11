@@ -6,9 +6,10 @@
   <p> <strong>{{ season.description }}</strong></p>
 
   {% for episode in episodes %}
-    <a href="}">
-    <p>{{ episode.title }}</p>
+    <a href="{{ path('wild_episode', {'id' : episode.season.id}) }}">
+      <br>{{ episode.title }}
     </a>
+
   {% endfor %}
 
 {% endblock %}
