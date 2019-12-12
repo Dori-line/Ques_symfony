@@ -2,7 +2,14 @@
 {% block title %} All programs {% endblock %}
 {% block body %}
 
-<h1>All the series from program : </h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+
+    <h1>All the series from program : </h1>
     {% for program in programs %}
     <div>
         <h2>{{ loop.index }} / {{ program.title }} - Category : {{ program.category.name }}</h2>
