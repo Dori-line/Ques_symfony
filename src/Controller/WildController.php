@@ -2,6 +2,7 @@
 // src/Controller/WildController.php
 namespace App\Controller;
 
+use App\Entity\Actor;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Entity\Episode;
@@ -178,5 +179,19 @@ Class WildController extends AbstractController
             'programTitle' => $programTitle
         ]);
 
+    }
+
+    /**
+     * Getting a program with a formatted slug for title
+     * @Route("/wild/actor/{id}",name="wild_actor")
+     * @param Actor $actor
+     * @return Response
+     */
+
+    public function showByActor(Actor $actor): Response
+    {
+        return $this->render('wild/actor.html.twig', [
+            'actor' => $actor
+        ]);
     }
 }

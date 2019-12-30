@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>You can find {{ actor.name }} in these movies : </h1>
+    <ul>
+        {% for program in actor.programs %}
+        <a href="{{ path('wild_program', {'slug' : program.title | lower | replace({' ': '-'})}) }}">
+            <p>{{ program.title }}</p>
+        </a>
+        {% endfor %}
+    </ul>
+
+
+
+{% endblock %}
