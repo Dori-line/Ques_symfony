@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 
 
 use App\Entity\Actor;
+use App\Service\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -27,6 +28,10 @@ class ActorFixtures extends Fixture implements DependentFixtureInterface
                 $actor = new Actor();
                 $actor->setName($faker->name);
                 $actor->addProgram($this->getReference("program_$randNumber"));
+
+                $slugify = new Slugify();
+                $slug = $slugify->generate($actor->getName());
+                $actor->setSlug($slug);
                 $manager->persist($actor);
             }
 
