@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Wild series!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        h1 {
+            background-color: #ffc0cb;
+            color: #ffffff;
+            padding: 30px 0 50px 0;
+            font-weight: normal;
+        }
+        hr {
+            border: none;
+            border-top: 3px solid #264459;
+            margin: 20px;
+        }
+        .container {
+            background-color: #fefefe;
+            width: 580px;
+            margin: 0 auto;
+        }
+        .bottom {
+            background-color: #efefee;
+        }
+        .block {
+            margin: 0;
+            padding: 10px 20px 20px 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffc0cb;
+            color: #fefefe;
+            border: 1px solid #fff;
+            border-radius: 3px;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+    <div class="container">
+        <div class="header text-center">
+            <a href="{{ url('program_index') }}"></a>
+        </div>
+        <div class="content">
+            <h1 class="text-center">Welcome!</h1>
+            <p class="block">
+                We just add a new program, take a look here and enjoy!
+            </p>
+            <p class="block text-center">
+                <a href="{{ url('program_show', {'slug': program.slug}) }}" class="btn">{{ program.title }}</a>
+            </p>
+            
+            <p class="block">{{ program.summary }}</p>
+        </div>
+        <div class="footer">
+            <p class="block bottom text-center">
+                Sent with ❤️ from Wild series
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
