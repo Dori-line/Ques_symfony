@@ -19,10 +19,11 @@ class ProgramRepository extends ServiceEntityRepository
         parent::__construct($registry, Program::class);
     }
 
-    // /**
-    //  * @return Program[] Returns an array of Program objects
-    //  */
-    /*
+    /**
+     * @param $value
+     * @return Program[] Returns an array of Program objects
+     */
+
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('p')
@@ -34,9 +35,9 @@ class ProgramRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
 
-    /*
+
+
     public function findOneBySomeField($value): ?Program
     {
         return $this->createQueryBuilder('p')
@@ -46,5 +47,5 @@ class ProgramRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }

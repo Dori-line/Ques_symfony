@@ -1,34 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Episode{% endblock %}
+ {% block stylesheets %}
+     {{ encore_entry_link_tags('global') }}
+ {% endblock %}
 
 {% block body %}
     <h1>Episode</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ episode.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ episode.title }}</td>
-            </tr>
-            <tr>
-                <th>Number</th>
-                <td>{{ episode.number }}</td>
-            </tr>
-            <tr>
-                <th>Synopsis</th>
-                <td>{{ episode.synopsis }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <h2>Title</h2>
+                <p>{{ episode.title }}</p>
+    <div>
+        Number : {{ episode.number }}
+        <br>
+        Synopsis
+        <p>{{ episode.synopsis }}</p>
+    </div>
 
-    <a href="{{ path('episode_index') }}">back to list</a>
 
-    <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">edit</a>
+    {% if app.user %}
+        <div>
+            <h3>Leave a comment: </h3>
+            {{ form_start(form) }}
+            {{ form_row(form.comment) }}
+            {{ form_row(form.rate) }}
+            <button class="btn">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+        </div>
+    {% endif %}
+    {% for comment in comments %}
+        <p>Comment of {{ comment.author.email }}</p>
+        <p>{{ comment.comment }}</p>
+        <p>Note : {{ comment.rate }}</p>
+    {% endfor %}
+
+
+    <a class="primary-button" href="{{ path('episode_index') }}">Back to list</a>
+    <br>
+
+    <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">Edit</a>
+    <br>
 
     {{ include('episode/_delete_form.html.twig') }}
+
+
+
 {% endblock %}

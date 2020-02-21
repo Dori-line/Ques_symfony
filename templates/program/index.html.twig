@@ -1,39 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Program index{% endblock %}
+{% block title %}Programs{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('global') }}
+    {{ encore_entry_link_tags('programs') }}
+{% endblock %}
 
 {% block body %}
-    <h1>Program index</h1>
+    <h1>Programs</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Summary</th>
-                <th>Poster</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <main class="program-body">
         {% for program in programs %}
-            <tr>
-                <td>{{ program.id }}</td>
-                <td>{{ program.title }}</td>
-                <td>{{ program.summary }}</td>
-                <td>{{ program.poster }}</td>
-                <td>
-                    <a href="{{ path('program_show', {'slug': program.slug}) }}">show</a>
-                    <a href="{{ path('program_edit', {'slug': program.slug}) }}">edit</a>
-                </td>
-            </tr>
+            <h1 class="primary-title">{{ program.title }}</h1>
+            <div class="program">
+                <p>{{ program.summary }}</p>
+                <img src="{{ program.title }}" alt="{{ program.poster }}">
+
+            </div>
+            <div class="buttons">
+                <a class="primary-button" href="{{ path('program_show', {'slug': program.slug}) }}">Show</a>
+                <a class="primary-button" href="{{ path('program_edit', {'slug': program.slug}) }}">Edit</a>
+            </div>
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
 
     <a href="{{ path('program_new') }}">Create new</a>
+
+    </main>
 {% endblock %}

@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Episode index{% endblock %}
+ {% block stylesheets %}
+     {{ encore_entry_link_tags('global') }}
+ {% endblock %}
 
 {% block body %}
     <h1>Episode index</h1>

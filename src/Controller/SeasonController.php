@@ -53,7 +53,7 @@ class SeasonController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="season_show", methods={"GET"})
+     * @Route("/{id}", name="season_show", methods={"GET"})
      * @param Season $season
      * @return Response
      */
@@ -65,7 +65,7 @@ class SeasonController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}/edit", name="season_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="season_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Season $season
      * @return Response
@@ -88,7 +88,7 @@ class SeasonController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="season_delete", methods={"DELETE"})
+     * @Route("/{id}", name="season_delete", methods={"DELETE"})
      * @param Request $request
      * @param Season $season
      * @return Response
