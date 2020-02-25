@@ -1,4 +1,13 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="row">
+    <div class="col-lg-6 col-sm-8 mx-auto text-center form p-3">
+        {{ form_start(form) }}
+        {{ form_widget(form.title, {'attr': {'class' : 'form-control mt-3', 'placeholder': 'Title', 'label': 'Title', 'required': true}}) }}
+        {{ form_widget(form.summary, {'attr': {'class' : 'form-control mt-3', 'placeholder': 'Summary', 'label': 'Summary', 'required': true}}) }}
+        {{ form_widget(form.poster, {'attr': {'class' : 'form-control mt-3', 'placeholder': 'Poster', 'label': 'Poster', 'required': true}}) }}
+        {{ form_widget(form.category, {'attr': {'class' : 'form-control mt-3', 'placeholder': 'Category', 'label': 'Category', 'required': true}}) }}
+        {{ form_widget(form.actors, {'attr': {'class' : 'form-control mt-3', 'placeholder': 'Actors', 'label': 'Actors', 'required': true}}) }}
+        <button class="primary-button">{{ button_label|default('Save') }}</button>
+    </div>
+</div>
+
 {{ form_end(form) }}

@@ -1,17 +1,19 @@
 @import "vars";
 
+#program-head {
+    margin: 10px 50px;
+    color: $secondary-color;
+}
+
 .program-body {
     display: inline;
-    h1 {
-        color: red;
-    }
 
     .program {
         display: flex;
     }
 
-    .buttons {
-
+    a:hover {
+        text-decoration: underline $primary-color;
     }
 
 }

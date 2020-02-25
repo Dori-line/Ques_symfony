@@ -1,0 +1,17 @@
+@import "vars";
+
+h1 {
+    text-align: center;
+}
+
+.one-program {
+    margin : 10px 50px;
+
+    li {
+        list-style-type: none;
+
+        a {
+            color: $primary-color;
+        }
+    }
+}

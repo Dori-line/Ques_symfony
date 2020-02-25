@@ -1,48 +1,53 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Episode{% endblock %}
+
  {% block stylesheets %}
      {{ encore_entry_link_tags('global') }}
+     {{ encore_entry_link_tags('episodes') }}
  {% endblock %}
 
 {% block body %}
-    <h1>Episode</h1>
+    <h1 id="episode-head">Episode</h1>
 
-                <h2>Title</h2>
-                <p>{{ episode.title }}</p>
-    <div>
+    <div class="one-episode">
+        <h2>{{ episode.title }}</h2>
         Number : {{ episode.number }}
-        <br>
-        Synopsis
+
         <p>{{ episode.synopsis }}</p>
+
+        {% if app.user %}
+            <div>
+                <h3>Leave a comment: </h3>
+                {{ form_start(form) }}
+                {{ form_row(form.comment) }}
+                {{ form_row(form.rate) }}
+                <button class="primary-button">{{ button_label|default('Save') }}</button>
+                {{ form_end(form) }}
+            </div>
+        {% endif %}
+        {% for comment in comments %}
+            <p>Comment of {{ comment.author.email }}</p>
+            <p>{{ comment.comment }}</p>
+            <p>Note : {{ comment.rate }}</p>
+
+            {% if app.user %}
+
+                {{ include('comment/_delete_form.html.twig') }}
+
+            {% endif %}
+
+        {% endfor %}
     </div>
-
-
-    {% if app.user %}
-        <div>
-            <h3>Leave a comment: </h3>
-            {{ form_start(form) }}
-            {{ form_row(form.comment) }}
-            {{ form_row(form.rate) }}
-            <button class="btn">{{ button_label|default('Save') }}</button>
-            {{ form_end(form) }}
-        </div>
-    {% endif %}
-    {% for comment in comments %}
-        <p>Comment of {{ comment.author.email }}</p>
-        <p>{{ comment.comment }}</p>
-        <p>Note : {{ comment.rate }}</p>
-    {% endfor %}
-
 
     <a class="primary-button" href="{{ path('episode_index') }}">Back to list</a>
     <br>
 
+    {% if is_granted("ROLE_ADMIN") %}
     <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">Edit</a>
     <br>
 
     {{ include('episode/_delete_form.html.twig') }}
-
-
+    {% endif %}
 
 {% endblock %}

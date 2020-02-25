@@ -1,25 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Programs{% endblock %}
+
 {% block stylesheets %}
     {{ encore_entry_link_tags('global') }}
     {{ encore_entry_link_tags('programs') }}
 {% endblock %}
 
 {% block body %}
-    <h1>Programs</h1>
+    <h1 id="program-head">Programs</h1>
 
     <main class="program-body">
         {% for program in programs %}
-            <h1 class="primary-title">{{ program.title }}</h1>
+
+            <a href="{{ path('program_show', {'slug': program.slug}) }}">
+                <h2 class="primary-title">{{ program.title }}</h2>
+            </a>
+
             <div class="program">
                 <p>{{ program.summary }}</p>
                 <img src="{{ program.title }}" alt="{{ program.poster }}">
 
             </div>
             <div class="buttons">
+                {% if is_granted("ROLE_ADMIN") %}
                 <a class="primary-button" href="{{ path('program_show', {'slug': program.slug}) }}">Show</a>
                 <a class="primary-button" href="{{ path('program_edit', {'slug': program.slug}) }}">Edit</a>
+                {% endif %}
             </div>
         {% else %}
             <tr>
