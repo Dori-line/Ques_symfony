@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-2">Register</h1>
+    <div class="w-75 m-auto">
+        {{ form_start(registrationForm) }}
+        Email
+        {{ form_widget(registrationForm.email, {'attr': {'class' : 'form-control w-75 mt-2 ml-4 mb-2', 'required' : true}}) }}
+        Password
+        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control w-75 mt-2 ml-4 mb-2', 'required': true}}) }}
+        {{ form_row(registrationForm.agreeTerms, {'attr': {'class': 'mr-0 ml-2', 'required': true}}) }}
+
+        <button class="primary-button">Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
+
+
+{% endblock %}

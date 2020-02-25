@@ -1,6 +1,26 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('global') }}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Bienvenue !</h1>
-    <P>Welcome to the home page!</P>
+
+    <div class="home-main">
+        {% if app.user %}
+            <h1 class="homeTitle">Welcome mate!</h1>
+        {% else %}
+
+            <h1 class="homeTitle">Welcome you ^^ !</h1>
+        {% endif %}
+
+        <p>Discover our new programs here below : </p>
+
+        <a class="link" href="{{ path('program_index') }}"> Programs</a>
+    </div>
+
 
 {% endblock %}

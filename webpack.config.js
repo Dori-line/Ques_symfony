@@ -28,6 +28,7 @@ Encore
     .addEntry('programs', './assets/scss/programs.scss')
     .addEntry('episodes', './assets/scss/episodes.scss')
     .addEntry('show_program', './assets/scss/show_program.scss')
+    .addEntry('home', './assets/scss/home.scss')
 
 
 

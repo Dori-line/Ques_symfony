@@ -11,16 +11,17 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link active text-home" href="{{ path('app_index') }}">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link text-option" href="{{ path('program_index') }}">Programs</a>
-                <a class="nav-item nav-link text-option" href="#">Pricing</a>
             </div>
         </div>
 
         <div>
+
             {% if app.user %}
-                {{ app.user.email }}
-                <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+                <img src="https://img.icons8.com/offices/30/000000/cookies.png">
+                <a href="{{ path('user_profile') }}">Account : {{ app.user.email }}</a>
+                <a href="{{ path('app_logout') }}">Logout</a>
             {% else %}
-                <a href="{{ path('app_login') }}"> Se connecter</a>
+                <a href="{{ path('app_login') }}"> Login</a>
             {% endif %}
         </div>
     </nav>
