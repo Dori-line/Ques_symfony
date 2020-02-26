@@ -5,9 +5,14 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
+ * @UniqueEntity(
+ *     fields={"title"},
+ *     message="Errors : this program already exists")
  */
 class Program
 {
@@ -19,12 +24,20 @@ class Program
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Errors : this field cannot be empty")
+     * @Assert\Length(max="255")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Errors : this field cannot be empty")
+     * @Assert\Regex(
+     *     pattern="/plus belle la vie/",
+     *     match=false,
+     *     message="Errors : we deal with good programs here"
+     * )
      */
     private $summary;
 
